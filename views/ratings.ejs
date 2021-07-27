@@ -1,0 +1,89 @@
+<% include templates/header.ejs %>
+<% include templates/sidebar.ejs %>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <i class="fa fa-home"></i>
+            <a href="/">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Review & Ratings</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <style>
+                        .checked {
+                          color: orange;
+                        }
+                        </style>
+                    <i class="fas fa-star checked"> </i>  Ratings
+                </div>
+                <div class="col-md-2">
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <a onClick="userBlockUnblockBoats('unblock')" multiple class="btn btn-primary btn-sm w-100 text-white" title="User">Active</a>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select_all"></th>
+                        <th> product name </th>
+                        <th> seller name </th>
+                        <th> email</th>
+                        <th> ratings</th>
+                        <th> review </th>
+                        <th> status</th>
+                        <!-- <th> Details </th> -->
+                        <th> action </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th><input type="checkbox" id="select_all"></th>
+                        <th> product name </th>
+                        <th> seller name </th>
+                        <th> email</th>
+                        <th> ratings</th>
+                        <th> review </th>
+                        <th> status</th>
+                        <!-- <th> Details </th> -->
+                        <th> action </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td><input class="checkbox" value="checked" type="checkbox" name="active_status"></td>
+                        <td>Boats</td>
+                        <td>shailendra</td>
+                        <td>shailendra.brinfotech@gmail.com</td>
+                        <td>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <!-- <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span> -->
+                        </td>
+                        <td>Test Review</td>
+                        <td>In active</td>
+                        <!-- <td> <a href="/boatsDetails">Details</a> </td> -->
+                        <td>
+                            <a class="btn btn-danger btn-sm text-white" onClick="removeDetails('remove_boats')" ><i class="fas fa-trash text-white" style="cursor:pointer"></i>&nbsp;&nbsp;Delete</a> 														
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include templates/footer.ejs %>  

@@ -1,0 +1,97 @@
+<% include templates/header.ejs %>
+<% include templates/sidebar.ejs %>
+
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <i class="fa fa-home"></i>
+          <a href="/">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Help</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <i class="fas fa-table"></i> query
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th> name </th>
+                        <th> email</th>
+                        <th> query</th>
+                        <th> user_type</th>
+                        <th> action </th>                        
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th> name </th>
+                        <th> email </th>
+                        <th> quert </th>
+                        <th> user_type</th>
+                        <th> action </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <%
+                        if(query_list != '')
+                        {
+                            for(var i=0; i < query_list.length; i++)
+                            {
+                                %>
+                                    <tr>
+                                        <td><%= query_list[i].name %></td>	
+                                        <td><%= query_list[i].email%></td>
+                                        <td><%= query_list[i].query%></td>
+                                        <td>
+                                            <%
+                                                if(query_list[i].user_type == 1)
+                                                {
+                                                    %>
+                                                        Individual
+                                                    <%
+                                                }
+                                                else if(query_list[i].user_type == 2)
+                                                {
+                                                    %>
+                                                        Professional
+                                                    <%
+                                                }
+                                                else if(query_list[i].user_type == 3)
+                                                {
+                                                    %>
+                                                        Viewer User
+                                                    <%
+                                                }
+                                            %>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm text-white" onClick="removeDetails('removeHelp','<%= query_list[i]._id %>')" ><i class="fas fa-trash text-white" style="cursor:pointer"></i>&nbsp;&nbsp;Delete</a>											
+                                        </td>
+                                    </tr>
+                                <%
+                            }
+                        }
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include templates/footer %>
+
+
+
+
+
+
+
+

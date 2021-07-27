@@ -1,0 +1,71 @@
+<!-- Header Sidebar -->
+<% include templates/header.ejs %>
+<% include templates/sidebar.ejs %>
+<!--// -->
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="/">Dashboard</a>
+		</li>
+		<li class="breadcrumb-item active">Notification</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+			<div class="row">
+				<div class="col-md-10">
+					<i class="fas fa-table"></i> Recipients
+				</div>
+				<div class="col-md-2">
+					<a href="/createemail" class="btn btn-info btn-block" title="Template">Send Notification </a>
+				</div>
+			</div>	
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+						<tr>
+							<th>Subject</th>
+							<th>Notification</th>
+							<th>Date</th>
+							<th>Action</th>
+						</tr>
+                    </thead>
+                    <tfoot>
+						<tr>
+							<th>Subject</th>
+							<th>Notification</th>
+							<th>Date</th>
+							<th>Action</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<%
+							if(recipient_lists != '')
+							{
+								for(var i=0; i < recipient_lists.length; i++)
+								{
+									var j=0;
+									%>
+										<tr>
+											<td><%= recipient_lists[i].subject %></td>
+											<td><%= recipient_lists[i].message %></td>													
+											<td><%= recipient_lists[i].created_at %></td>
+											<td>
+												<a class="btn btn-danger btn-sm text-white" onClick="removeDetails('removenotification','<%= recipient_lists[i]._id %>')" ><i class="fas fa-trash text-white" style="cursor:pointer"></i>&nbsp;&nbsp;Delete</a>											
+											</td>
+										</tr>
+									<%											
+								}
+							}								
+						%>
+					</tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<!-- Footer -->
+<% include templates/footer.ejs %>

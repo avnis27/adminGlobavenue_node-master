@@ -1,0 +1,74 @@
+<% include templates/header.ejs %>
+<% include templates/sidebar.ejs %>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <i class="fa fa-home"></i>
+            <a href="/">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Location</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <i class="fas fa-table"></i> City
+                </div>
+                <div class="col-md-2">
+                <a href="/addCity" class="btn btn-primary btn-block" title="Plan">Add New City</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th> city </th>
+                        <th> country</th>
+                        <th> action </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th> city </th>
+                        <th> country</th>
+                        <th> action </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <%
+                        if(city_result != '')
+                        {
+                            for(var i=0; i < city_result.length; i++)
+                            {
+                                %>
+                                    <tr>
+                                        <td>
+                                            <%= city_result[i].city %>
+                                        </td>
+                                        <td>
+                                            <%= city_result[i].country %>
+                                        </td>	
+                                        
+                                        <td>
+                                            <a href="/editCity/<%= city_result[i]._id %>" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-edit text-white"></i>&nbsp;&nbsp;Edit
+                                            </a>
+                                            &nbsp;
+                                            <a class="btn btn-danger btn-sm text-white" onClick="removeDetails('removeCity','<%= city_result[i]._id %>')" ><i class="fas fa-trash text-white" style="cursor:pointer"></i>&nbsp;&nbsp;Delete</a>											
+                                        </td>												
+                                    </tr>
+                                <%	
+                            }
+                        }
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<% include templates/footer.ejs %>   

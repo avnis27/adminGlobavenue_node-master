@@ -1,0 +1,92 @@
+<% include templates/header.ejs %>
+<% include templates/sidebar.ejs %>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <i class="fa fa-home"></i>
+          <a href="/">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Abuse Management </li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <i class="fas fa-table"></i> Abuse
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th> name </th>
+                        <th> email</th>
+                        <th> user_type</th>
+                        <th> ads</th>
+                        <th> description</th>
+                        <th> action </th>                        
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th> name </th>
+                        <th> email</th>
+                        <th> user_type</th>
+                        <th> ads</th>
+                        <th> description</th>
+                        <th> action </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <%
+                        if(abuse_result != '')
+                        {
+                            for(var i=0; i < abuse_result.length; i++)
+                            {
+                                %>
+                                    <tr>
+                                        <td><%= abuse_result[i].name %></td>	
+                                        <td><%= abuse_result[i].email%></td>
+                                        <td>
+                                            <%
+                                                if(abuse_result[i].user_type == 1)
+                                                {
+                                                    %>
+                                                        Individual
+                                                    <%
+                                                }
+                                                else if(abuse_result[i].user_type == 2)
+                                                {
+                                                    %>
+                                                        Professional
+                                                    <%
+                                                }
+                                                else if(abuse_result[i].user_type == 3)
+                                                {
+                                                    %>
+                                                        Viewer User
+                                                    <%
+                                                }
+                                            %>
+                                        </td>
+                                        <td><%= abuse_result[i].ads%></td>
+                                        <td><%= abuse_result[i].description%></td>
+                                        
+                                        <td>
+                                            <a class="btn btn-danger btn-sm text-white" onClick="removeDetails('removeAbuse','<%= abuse_result[i]._id %>')" ><i class="fas fa-trash text-white" style="cursor:pointer"></i>&nbsp;&nbsp;Delete</a>
+                                    	</td>
+                                    </tr>
+                                <%
+                            }
+                        }
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>    
+
+<% include templates/footer %>

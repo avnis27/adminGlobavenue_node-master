@@ -1,0 +1,43 @@
+<!-- Include Header -->
+<% include templates/header.ejs %>
+<% include templates/sidebar.ejs %>
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Country edit</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-12 column">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <br>
+                    <h3 class="box-title">Edit country details </h3> 
+                </div>
+                <form action="/editCountry/<%= edit_country._id %>" method="post">
+                    <div class="row">	
+                        <div class="form-group col-md-4">
+                            <br>
+                            <label>Country<span class="text-danger">*</span></label>
+                            <input type="text" name="country" value="<%= edit_country.country %>" required id="country" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <div class="input text">
+                                <button class="btn btn-success btn-sm" type="submit" ><i class="fas fa-fw fa-save"></i> Save</button>
+                                <a href="/country" class="btn btn-warning btn-sm"><i class="fas fa-fw fa-ban"></i> Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include Footer -->
+<% include templates/footer.ejs %>
+<!--// -->   
